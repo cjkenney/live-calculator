@@ -43,7 +43,7 @@ class Calculator extends Component {
           <Button handleClick={this.updateInput}>8</Button>
           <Button handleClick={this.updateInput}>9</Button>
           <Button operator handleClick={this.updateInput}>
-            X
+            *
           </Button>
         </Row>
         <Row>
