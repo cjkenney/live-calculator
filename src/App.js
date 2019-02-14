@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import styled, { createGlobalStyle } from "styled-components";
-import Calculator from "./components/Calculator";
+import React, { Component } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+import Calculator from './components/Calculator';
+import Feed from './components/Feed';
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -25,6 +26,7 @@ class App extends Component {
       <StyledApp>
         <GlobalStyle />
         <Calculator />
+        <Feed />
       </StyledApp>
     );
   }
