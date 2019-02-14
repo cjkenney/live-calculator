@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled, { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica';
+}
+`;
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+        <GlobalStyle />
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
