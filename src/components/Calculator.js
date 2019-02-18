@@ -4,6 +4,7 @@ import * as math from 'mathjs';
 import Button from './Button';
 import ClearButton from './ClearButton';
 import Input from './Input';
+import { sendMessage } from '../socket';
 
 const CalculatorWrapper = styled.div`
   width: 400px;
@@ -23,7 +24,26 @@ class Calculator extends Component {
   };
 
   handleEqual = () => {
+    let timestamp = new Date().toLocaleString();
+    console.log(timestamp);
+
+    console.log(JSON.stringify({ date: timestamp, message: this.state.input }));
+
     this.setState({ input: math.eval(this.state.input) });
+
+    // send POST request to API
+    fetch('http://localhost:4040', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        date: timestamp,
+        message: this.state.input + '=' + math.eval(this.state.input)
+      })
+    })
+      .then(console.log('POSTed message'))
+      .then(sendMessage());
   };
 
   render() {

@@ -13,7 +13,9 @@ body {
 `;
 
 const StyledApp = styled.div`
+  margin-top: 50px;
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
