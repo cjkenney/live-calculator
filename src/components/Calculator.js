@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import * as math from 'mathjs';
-import Button from './Button';
+import Button, { StyledButton } from './Button';
 import ClearButton from './ClearButton';
 import Input from './Input';
 import { sendMessage } from '../socket';
@@ -25,25 +25,27 @@ class Calculator extends Component {
 
   handleEqual = () => {
     let timestamp = new Date().toLocaleString();
-    console.log(timestamp);
 
-    console.log(JSON.stringify({ date: timestamp, message: this.state.input }));
+    try {
+      this.setState({ input: math.eval(this.state.input) });
 
-    this.setState({ input: math.eval(this.state.input) });
-
-    // send POST request to API
-    fetch('https://pure-plateau-88745.herokuapp.com/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        date: timestamp,
-        message: this.state.input + '=' + math.eval(this.state.input)
+      // send POST request to API
+      fetch('https://pure-plateau-88745.herokuapp.com/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          date: timestamp,
+          message: this.state.input + '=' + math.eval(this.state.input)
+        })
       })
-    })
-      .then(console.log('POSTed message'))
-      .then(sendMessage());
+        .then(console.log('POSTed message'))
+        .then(sendMessage());
+    } catch (error) {
+      console.log(error);
+      this.setState({ input: 'Error!' });
+    }
   };
 
   render() {
@@ -54,8 +56,8 @@ class Calculator extends Component {
           <ClearButton handleClear={() => this.setState({ input: '' })}>
             AC
           </ClearButton>
-          <Button />
-          <Button />
+          <StyledButton />
+          <StyledButton />
           <Button handleClick={this.updateInput}>/</Button>
         </Row>
         <Row>
@@ -84,8 +86,8 @@ class Calculator extends Component {
         </Row>
         <Row>
           <Button handleClick={this.updateInput}>0</Button>
-          <Button />
-          <Button />
+          <StyledButton />
+          <StyledButton />
           <Button handleClick={this.handleEqual} operator>
             =
           </Button>

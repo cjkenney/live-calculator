@@ -18,4 +18,5 @@ const Button = props => (
   </StyledButton>
 );
 
+export { StyledButton };
 export default Button;
