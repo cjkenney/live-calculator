@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import openSocket from 'socket.io-client';
-// import { subscribeToFeed, receiveMessage } from '../socket';
 
 const socket = openSocket('https://pure-plateau-88745.herokuapp.com/');
 
 const StyledFeed = styled.div`
-  width: 100%;
+  margin: 0 auto;
   background-color: cadetblue;
 `;
 
