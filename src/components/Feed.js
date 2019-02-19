@@ -21,7 +21,7 @@ class Feed extends Component {
         let feed = data.map((item, index) => {
           return (
             <p key={index}>
-              {item.date} - {item.message}
+              {item.date} | {item.message}
             </p>
           );
         });
@@ -35,23 +35,6 @@ class Feed extends Component {
 
   componentDidMount() {
     this.refresh();
-    // fetch('http://localhost:4040/')
-    //   .then(results => {
-    //     return results.json();
-    //   })
-    //   .then(data => {
-    //     let feed = data.map((item, index) => {
-    //       return (
-    //         <p key={index}>
-    //           {item.date} - {item.message}
-    //         </p>
-    //       );
-    //     });
-    //     this.setState({ messages: feed });
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
 
     socket.on('calculation', () => {
       this.refresh();
