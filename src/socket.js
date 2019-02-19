@@ -1,5 +1,5 @@
 import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:4040');
+const socket = openSocket('https://pure-plateau-88745.herokuapp.com/');
 
 const sendMessage = () => {
   socket.emit('calculation');

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import openSocket from 'socket.io-client';
 // import { subscribeToFeed, receiveMessage } from '../socket';
 
-const socket = openSocket('http://localhost:4040');
+const socket = openSocket('https://pure-plateau-88745.herokuapp.com/');
 
 const StyledFeed = styled.div`
   width: 100%;
@@ -14,7 +14,7 @@ class Feed extends Component {
   state = { messages: '' };
 
   refresh = () => {
-    fetch('http://localhost:4040/')
+    fetch('https://pure-plateau-88745.herokuapp.com/')
       .then(results => {
         return results.json();
       })

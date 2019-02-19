@@ -32,7 +32,7 @@ class Calculator extends Component {
     this.setState({ input: math.eval(this.state.input) });
 
     // send POST request to API
-    fetch('http://localhost:4040', {
+    fetch('https://pure-plateau-88745.herokuapp.com/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
