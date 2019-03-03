@@ -7,8 +7,8 @@ const StyledButton = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: ${props => (props.operator ? '#fe9241' : '#e0e1e6')};
-  color: ${props => (props.operator ? 'white' : '#888888')};
+  background-color: #e0e1e6;
+  color: #888888;
   outline: 1px solid #888888;
 `;
 
